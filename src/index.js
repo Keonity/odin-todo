@@ -1,13 +1,14 @@
 import Project from './project.js';
 import toDo from './todo.js';
 import initialPageLoad from './initialPageLoad.js';
+import './styles.css';
 
 console.log("Test");
 
-const newHeader = document.createElement("h3");
+/* const newHeader = document.createElement("h3");
 newHeader.innerHTML = "Test";
 
-document.querySelector("#test").appendChild(newHeader);
+document.querySelector("#test").appendChild(newHeader); */
 
 const defaultProject = new Project("Default");
 
