@@ -1,5 +1,6 @@
 import Project from './project.js';
 import toDo from './todo.js';
+import initialPageLoad from './initialPageLoad.js';
 
 console.log("Test");
 
@@ -15,6 +16,8 @@ newToDo.setDescription("Test description");
 newToDo.setDueDate("2020-2020-2020");
 newToDo.setPriority("High");
 
-defaultProject.addTodo(newToDo);
+defaultProject.addToDo(newToDo);
 
 console.log(defaultProject.getTasks()[0]);
+
+initialPageLoad();

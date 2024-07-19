@@ -4,7 +4,7 @@ export default class Project {
         this.tasks = new Array();
     }
 
-    addTodo(todo) {
+    addToDo(todo) {
         this.tasks.push(todo);
     }
 
