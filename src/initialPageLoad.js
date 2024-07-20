@@ -1,5 +1,6 @@
 import Project from './project.js';
 import toDo from './todo.js';
+import displayToDos from './displayToDos';
 
 export default function initialPageLoad() {
     const sidebarContainer = document.createElement("div");
@@ -45,7 +46,9 @@ export default function initialPageLoad() {
     projectContainer.appendChild(sidebarContainer);
     projectContainer.appendChild(toDoContainer);
 
-    defaultProj.getTasks().forEach((element, index, array) => {
+    displayToDos(defaultProj);
+
+    /* defaultProj.getTasks().forEach((element, index, array) => {
         const currTaskContainer = document.createElement("div");
         currTaskContainer.setAttribute("id", "taskContainer");
 
@@ -61,7 +64,7 @@ export default function initialPageLoad() {
         currTaskContainer.appendChild(currTaskDueDate);
 
         toDoContainer.appendChild(currTaskContainer);  
-    })
+    }) */
 
     projArray.forEach((element, index, array) => {
         const currProjContainer = document.createElement("div");
@@ -73,6 +76,11 @@ export default function initialPageLoad() {
 
         currProjContainer.appendChild(currProjTitle);
         sidebarContainer.appendChild(currProjContainer);
+
+        currProjContainer.addEventListener("click", () => {
+            // console.log(array[index]);
+            displayToDos(array[index]);
+        });
     })
 
 }
