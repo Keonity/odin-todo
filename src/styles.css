@@ -15,7 +15,8 @@ body {
 #projectContainer {
     height: 100%;
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
 }
 
 #sidebarContainer {
@@ -24,16 +25,14 @@ body {
     z-index: 1;
     flex-direction: column;
     align-content: flex-start;
-    flex-grow: 1;
     background-color: blanchedalmond;
-    padding: 0.5%;
+    padding: 3.75%;
     box-shadow: 3px 0px rgba(0, 0, 0, 0.1);
 }
 
 #toDoContainer {
     display: flex;
     flex-wrap: wrap;
-    flex-grow: 4;
     align-content: flex-start;
     gap: 2.5%;
     background-color: antiquewhite;
