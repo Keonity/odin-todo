@@ -11,9 +11,42 @@ export default function initialPageLoad() {
     sidebarHeader.setAttribute("id", "sidebarHeader");
     sidebarContainer.appendChild(sidebarHeader);
 
+    const addProject = document.createElement("button");
+    addProject.setAttribute("value", "New Project");
+    addProject.setAttribute("id", "addProjectButton");
+    addProject.innerText = "Add Project";
+    addProject.addEventListener("click", () => {
+        const newProjName = prompt("Enter a name for the new project.");
+        const newProj = new Project(newProjName);
+        projArray.push(newProj);
+
+        while (sidebarContainer.childElementCount > 2) {
+            sidebarContainer.removeChild(sidebarContainer.lastChild);
+        }
+
+        projArray.forEach((element, index, array) => {
+            const currProjContainer = document.createElement("div");
+            currProjContainer.setAttribute("id", "projSidebarContainer");
+    
+            const currProjTitle = document.createElement("h2");
+            currProjTitle.setAttribute("id", "projSidebarTitle");
+            currProjTitle.innerText = `${element.title}`;
+    
+            currProjContainer.appendChild(currProjTitle);
+            sidebarContainer.appendChild(currProjContainer);
+    
+            currProjContainer.addEventListener("click", () => {
+                // console.log(array[index]);
+                console.log(displayToDos(array[index]));
+            });
+        });
+    });
+
+    sidebarContainer.appendChild(addProject);
+
+
     const toDoContainer = document.createElement("div");
     toDoContainer.setAttribute("id", "toDoContainer");
-
 
     const toDoHeader = document.createElement("h1");
     toDoHeader.innerText = `Project tasks`;
@@ -48,24 +81,6 @@ export default function initialPageLoad() {
 
     displayToDos(defaultProj);
 
-    /* defaultProj.getTasks().forEach((element, index, array) => {
-        const currTaskContainer = document.createElement("div");
-        currTaskContainer.setAttribute("id", "taskContainer");
-
-        const currTaskTitle = document.createElement("h3");
-        currTaskTitle.setAttribute("id", "taskTitle");
-        currTaskTitle.innerHTML = `${element.title}`;
-
-        const currTaskDueDate = document.createElement("h3");
-        currTaskDueDate.setAttribute("id", "taskDueDate");
-        currTaskDueDate.innerHTML = `${element.dueDate}`;
-
-        currTaskContainer.appendChild(currTaskTitle);
-        currTaskContainer.appendChild(currTaskDueDate);
-
-        toDoContainer.appendChild(currTaskContainer);  
-    }) */
-
     projArray.forEach((element, index, array) => {
         const currProjContainer = document.createElement("div");
         currProjContainer.setAttribute("id", "projSidebarContainer");
@@ -79,8 +94,8 @@ export default function initialPageLoad() {
 
         currProjContainer.addEventListener("click", () => {
             // console.log(array[index]);
-            displayToDos(array[index]);
+            console.log(displayToDos(array[index]));
         });
-    })
+    });
 
-}
+};
