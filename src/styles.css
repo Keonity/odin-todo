@@ -75,8 +75,15 @@ body {
     border-bottom: 1px solid black;
 }
 
-#addProjectButton {
+#addProjectButton, {
     width: 50%;
+    height: 10%;
+    border-radius: 12px;
+    align-self: center;
+}
+
+#addTaskButton {
+    width: 25%;
     height: 10%;
     border-radius: 12px;
     align-self: center;

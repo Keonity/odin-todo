@@ -3,6 +3,8 @@ import toDo from './todo.js';
 import displayToDos from './displayToDos';
 
 export default function initialPageLoad() {
+    var currProject = "";
+
     const sidebarContainer = document.createElement("div");
     sidebarContainer.setAttribute("id", "sidebarContainer");
 
@@ -20,7 +22,7 @@ export default function initialPageLoad() {
         const newProj = new Project(newProjName);
         projArray.push(newProj);
 
-        while (sidebarContainer.childElementCount > 2) {
+        while (sidebarContainer.childElementCount > 1) {
             sidebarContainer.removeChild(sidebarContainer.lastChild);
         }
 
@@ -68,7 +70,7 @@ export default function initialPageLoad() {
     newToDo2.setPriority("High");
 
     defaultProj.addToDo(newToDo);
-    defaultProj.addToDo(newToDo2);
+    defaultProj2.addToDo(newToDo2);
 
     projArray.push(defaultProj);
     projArray.push(defaultProj2);
@@ -88,6 +90,15 @@ export default function initialPageLoad() {
         const currProjTitle = document.createElement("h2");
         currProjTitle.setAttribute("id", "projSidebarTitle");
         currProjTitle.innerText = `${element.title}`;
+
+        /* const addTask = document.createElement("button");
+        addTask.setAttribute("id", "addTaskButton");
+        addTask.innerText = "Add New Task";
+        addTask.addEventListener("click", () => {
+            const newTaskName = prompt("Enter a name for the new task.");
+            const newTask = new toDo(newTaskName);
+            element.addToDo(newTask);
+        }); */
 
         currProjContainer.appendChild(currProjTitle);
         sidebarContainer.appendChild(currProjContainer);
