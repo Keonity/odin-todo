@@ -39,7 +39,7 @@ body {
     padding: 1.25%;
 }
 
-#taskContainer {
+.taskContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -50,7 +50,7 @@ body {
     height: 25%;
 }
 
-#taskTitle, #taskDueDate {
+.taskTitle, .taskDueDate {
     width: 100%;
     color: white;
 }
@@ -75,7 +75,7 @@ body {
     border-bottom: 1px solid black;
 }
 
-#addProjectButton, {
+#addProjectButton {
     width: 50%;
     height: 10%;
     border-radius: 12px;
@@ -87,4 +87,18 @@ body {
     height: 10%;
     border-radius: 12px;
     align-self: center;
+}
+
+.taskExpand, .taskDelete {
+    width: 35%;
+    height: 35%;
+    border-radius: 12px;
+}
+
+.taskExpand {
+    justify-items: flex-start;
+}
+
+.taskDelete {
+    justify-items: flex-end;
 }

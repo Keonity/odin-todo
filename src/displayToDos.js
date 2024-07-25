@@ -20,19 +20,37 @@ export default function displayToDos(project) {
                 toDoContainer.removeChild(toDoContainer.lastChild);
             }
             project.getTasks().forEach((element, index, array) => {
+                let deleted = false;
+
                 const currTaskContainer = document.createElement("div");
-                currTaskContainer.setAttribute("id", "taskContainer");
+                currTaskContainer.setAttribute("class", "taskContainer");
+                currTaskContainer.setAttribute("id", `${element.title}`);
         
                 const currTaskTitle = document.createElement("h3");
-                currTaskTitle.setAttribute("id", "taskTitle");
+                currTaskTitle.setAttribute("class", "taskTitle");
                 currTaskTitle.innerHTML = `${element.title}`;
         
                 const currTaskDueDate = document.createElement("h3");
-                currTaskDueDate.setAttribute("id", "taskDueDate");
+                currTaskDueDate.setAttribute("class", "taskDueDate");
                 currTaskDueDate.innerHTML = `${element.dueDate}`;
         
+                const currTaskExpand = document.createElement("button");
+                currTaskExpand.setAttribute("class", "taskExpand");
+                currTaskExpand.innerHTML = `Show Details`;
+    
+                const currTaskDelete = document.createElement("button");
+                currTaskDelete.setAttribute("class", "taskDelete");
+                currTaskDelete.innerHTML = `Delete Task`;
+                currTaskDelete.addEventListener("click", () => {
+                    array.splice(index, 1);
+                    const deletingElement = document.getElementById(`${element.title}`);
+                    deletingElement.remove();
+                });
+            
                 currTaskContainer.appendChild(currTaskTitle);
                 currTaskContainer.appendChild(currTaskDueDate);
+                currTaskContainer.appendChild(currTaskExpand);
+                currTaskContainer.appendChild(currTaskDelete);
         
                 toDoContainer.appendChild(currTaskContainer);  
             });
@@ -41,18 +59,34 @@ export default function displayToDos(project) {
     
         project.getTasks().forEach((element, index, array) => {
             const currTaskContainer = document.createElement("div");
-            currTaskContainer.setAttribute("id", "taskContainer");
+            currTaskContainer.setAttribute("class", "taskContainer");
+            currTaskContainer.setAttribute("id", `${element.title}`);
     
             const currTaskTitle = document.createElement("h3");
-            currTaskTitle.setAttribute("id", "taskTitle");
+            currTaskTitle.setAttribute("class", "taskTitle");
             currTaskTitle.innerHTML = `${element.title}`;
     
             const currTaskDueDate = document.createElement("h3");
-            currTaskDueDate.setAttribute("id", "taskDueDate");
+            currTaskDueDate.setAttribute("class", "taskDueDate");
             currTaskDueDate.innerHTML = `${element.dueDate}`;
     
+            const currTaskExpand = document.createElement("button");
+            currTaskExpand.setAttribute("class", "taskExpand");
+            currTaskExpand.innerHTML = `Show Details`;
+
+            const currTaskDelete = document.createElement("button");
+            currTaskDelete.setAttribute("class", "taskDelete");
+            currTaskDelete.innerHTML = `Delete Task`;
+            currTaskDelete.addEventListener("click", () => {
+                array.splice(index, 1);
+                const deletingElement = document.getElementById(`${element.title}`);
+                deletingElement.remove();
+            });
+        
             currTaskContainer.appendChild(currTaskTitle);
             currTaskContainer.appendChild(currTaskDueDate);
+            currTaskContainer.appendChild(currTaskExpand);
+            currTaskContainer.appendChild(currTaskDelete);
     
             toDoContainer.appendChild(currTaskContainer);  
         });
