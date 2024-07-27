@@ -20,23 +20,63 @@ export default function displayToDos(project) {
                 toDoContainer.removeChild(toDoContainer.lastChild);
             }
             project.getTasks().forEach((element, index, array) => {
-                let deleted = false;
-
                 const currTaskContainer = document.createElement("div");
                 currTaskContainer.setAttribute("class", "taskContainer");
                 currTaskContainer.setAttribute("id", `${element.title}`);
         
-                const currTaskTitle = document.createElement("h3");
+                const currTaskTitle = document.createElement("input");
+                currTaskTitle.setAttribute("type", "text");
                 currTaskTitle.setAttribute("class", "taskTitle");
-                currTaskTitle.innerHTML = `${element.title}`;
+                currTaskTitle.setAttribute("value", `${element.title}`);
+                currTaskTitle.addEventListener("change", (event) => {
+                    element.title = event.target.value;
+                });
         
-                const currTaskDueDate = document.createElement("h3");
+                const currTaskDueDate = document.createElement("input");
+                currTaskDueDate.setAttribute("type", "text");
                 currTaskDueDate.setAttribute("class", "taskDueDate");
-                currTaskDueDate.innerHTML = `${element.dueDate}`;
+                currTaskDueDate.setAttribute("value", `${element.dueDate}`);
+                currTaskDueDate.addEventListener("change", (event) => {
+                    element.dueDate = event.target.value;
+                })
         
                 const currTaskExpand = document.createElement("button");
                 currTaskExpand.setAttribute("class", "taskExpand");
                 currTaskExpand.innerHTML = `Show Details`;
+                currTaskExpand.addEventListener("click", () => {
+                    const currTaskDesc = document.createElement("input");
+                    currTaskDesc.setAttribute("type", "text");
+                    currTaskDesc.setAttribute("class", "taskDescription");
+                    currTaskDesc.setAttribute("value", `${element.description}`);
+                    currTaskDesc.addEventListener("change", (event) => {
+                        element.description = event.target.value;
+                    });
+    
+                    const currTaskPriority = document.createElement("input");
+                    currTaskPriority.setAttribute("type", "text"); 
+                    currTaskPriority.setAttribute("class", "taskPriority");
+                    currTaskPriority.setAttribute("value", `${element.priority}`);
+                    currTaskPriority.addEventListener("change", (event) => {
+                        element.priority = event.target.value;
+                    })
+    
+                    currTaskContainer.insertBefore(currTaskDesc, currTaskExpand);
+                    currTaskContainer.insertBefore(currTaskPriority, currTaskExpand); 
+    
+                    const currTaskHide = document.createElement("button");
+                    currTaskHide.innerHTML = `Hide Details`;
+                    currTaskHide.setAttribute("class", "taskHide");
+                    currTaskHide.addEventListener("click", () => {
+                        currTaskDesc.remove();
+                        currTaskPriority.remove();
+                        currTaskContainer.insertBefore(currTaskExpand, currTaskDelete);
+                        currTaskHide.remove();
+                    })
+                    currTaskContainer.insertBefore(currTaskHide, currTaskExpand);
+                    currTaskExpand.remove();
+    
+                    // currTaskExpand.style.visibility = 'hidden';
+                });
     
                 const currTaskDelete = document.createElement("button");
                 currTaskDelete.setAttribute("class", "taskDelete");
@@ -62,25 +102,41 @@ export default function displayToDos(project) {
             currTaskContainer.setAttribute("class", "taskContainer");
             currTaskContainer.setAttribute("id", `${element.title}`);
     
-            const currTaskTitle = document.createElement("h3");
+            const currTaskTitle = document.createElement("input");
+            currTaskTitle.setAttribute("type", "text");
             currTaskTitle.setAttribute("class", "taskTitle");
-            currTaskTitle.innerHTML = `${element.title}`;
+            currTaskTitle.setAttribute("value", `${element.title}`);
+            currTaskTitle.addEventListener("change", (event) => {
+                element.title = event.target.value;
+            });
     
-            const currTaskDueDate = document.createElement("h3");
+            const currTaskDueDate = document.createElement("input");
+            currTaskDueDate.setAttribute("type", "text");
             currTaskDueDate.setAttribute("class", "taskDueDate");
-            currTaskDueDate.innerHTML = `${element.dueDate}`;
+            currTaskDueDate.setAttribute("value", `${element.dueDate}`);
+            currTaskDueDate.addEventListener("change", (event) => {
+                element.dueDate = event.target.value;
+            })
     
             const currTaskExpand = document.createElement("button");
             currTaskExpand.setAttribute("class", "taskExpand");
             currTaskExpand.innerHTML = `Show Details`;
             currTaskExpand.addEventListener("click", () => {
-                const currTaskDesc = document.createElement("p");
-                currTaskDesc.innerHTML = `${element.description}`;
+                const currTaskDesc = document.createElement("input");
+                currTaskDesc.setAttribute("type", "text");
                 currTaskDesc.setAttribute("class", "taskDescription");
+                currTaskDesc.setAttribute("value", `${element.description}`);
+                currTaskDesc.addEventListener("change", (event) => {
+                    element.description = event.target.value;
+                });
 
-                const currTaskPriority = document.createElement("p");
-                currTaskPriority.innerHTML = `${element.priority}`;
+                const currTaskPriority = document.createElement("input");
+                currTaskPriority.setAttribute("type", "text"); 
                 currTaskPriority.setAttribute("class", "taskPriority");
+                currTaskPriority.setAttribute("value", `${element.priority}`);
+                currTaskPriority.addEventListener("change", (event) => {
+                    element.priority = event.target.value;
+                })
 
                 currTaskContainer.insertBefore(currTaskDesc, currTaskExpand);
                 currTaskContainer.insertBefore(currTaskPriority, currTaskExpand); 
