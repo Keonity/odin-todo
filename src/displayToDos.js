@@ -73,6 +73,32 @@ export default function displayToDos(project) {
             const currTaskExpand = document.createElement("button");
             currTaskExpand.setAttribute("class", "taskExpand");
             currTaskExpand.innerHTML = `Show Details`;
+            currTaskExpand.addEventListener("click", () => {
+                const currTaskDesc = document.createElement("p");
+                currTaskDesc.innerHTML = `${element.description}`;
+                currTaskDesc.setAttribute("class", "taskDescription");
+
+                const currTaskPriority = document.createElement("p");
+                currTaskPriority.innerHTML = `${element.priority}`;
+                currTaskPriority.setAttribute("class", "taskPriority");
+
+                currTaskContainer.insertBefore(currTaskDesc, currTaskExpand);
+                currTaskContainer.insertBefore(currTaskPriority, currTaskExpand); 
+
+                const currTaskHide = document.createElement("button");
+                currTaskHide.innerHTML = `Hide Details`;
+                currTaskHide.setAttribute("class", "taskHide");
+                currTaskHide.addEventListener("click", () => {
+                    currTaskDesc.remove();
+                    currTaskPriority.remove();
+                    currTaskContainer.insertBefore(currTaskExpand, currTaskDelete);
+                    currTaskHide.remove();
+                })
+                currTaskContainer.insertBefore(currTaskHide, currTaskExpand);
+                currTaskExpand.remove();
+
+                // currTaskExpand.style.visibility = 'hidden';
+            });
 
             const currTaskDelete = document.createElement("button");
             currTaskDelete.setAttribute("class", "taskDelete");
