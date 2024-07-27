@@ -1,3 +1,5 @@
+import displayToDos from "./displayToDos";
+
 export default class Project {
     constructor(title) {
         this.title = title;
@@ -6,6 +8,10 @@ export default class Project {
 
     addToDo(todo) {
         this.tasks.push(todo);
+    }
+
+    showToDos() {
+        displayToDos(this);
     }
 
     getTasks() {

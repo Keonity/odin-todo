@@ -1,12 +1,11 @@
 import toDo from './todo.js';
+import clearChildren from './clearChildren.js';
 
 export default function displayToDos(project) {
     const toDoContainer = document.querySelector("#toDoContainer");
 
     if (toDoContainer) {
-        while (toDoContainer.childElementCount > 1) {
-            toDoContainer.removeChild(toDoContainer.lastChild);
-        }
+        clearChildren(toDoContainer, 1);
 
         const addTask = document.createElement("button");
         addTask.setAttribute("id", "addTaskButton");
@@ -16,10 +15,13 @@ export default function displayToDos(project) {
             const newTask = new toDo(newTaskName);
             project.addToDo(newTask);
 
-            while (toDoContainer.childElementCount > 2) {
+            clearChildren(toDoContainer, 2);
+
+            /* while (toDoContainer.childElementCount > 2) {
                 toDoContainer.removeChild(toDoContainer.lastChild);
-            }
-            project.getTasks().forEach((element, index, array) => {
+            } */
+
+            (project.getTasks()).forEach((element, index, array) => {
                 const currTaskContainer = document.createElement("div");
                 currTaskContainer.setAttribute("class", "taskContainer");
                 currTaskContainer.setAttribute("id", `${element.title}`);
@@ -97,7 +99,7 @@ export default function displayToDos(project) {
         });
         toDoContainer.appendChild(addTask);
     
-        project.getTasks().forEach((element, index, array) => {
+        (project.getTasks()).forEach((element, index, array) => {
             const currTaskContainer = document.createElement("div");
             currTaskContainer.setAttribute("class", "taskContainer");
             currTaskContainer.setAttribute("id", `${element.title}`);
