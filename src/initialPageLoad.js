@@ -41,16 +41,16 @@ export default function initialPageLoad() {
 
     const projArray = new Array();
 
-    const defaultProj = new Project("Default");
-    const defaultProj2 = new Project("Default 2");
-    const newToDo = new toDo("Make a task like me!");
-    newToDo.setDescription("Test description");
-    newToDo.setDueDate("2020-2020-2020");
-    newToDo.setPriority("High");
+    const defaultProj = new Project("Cafe Recipes");
+    const defaultProj2 = new Project("Birthdays");
+    const newToDo = new toDo("Example Latte");
+    newToDo.setDescription("Astral Espresso roast under a cloud of steamy milkfoam.");
+    newToDo.setDueDate("19/10/24");
+    newToDo.setPriority("Medium");
 
-    const newToDo2 = new toDo("Cosmic");
-    newToDo2.setDescription("Cosmic description");
-    newToDo2.setDueDate("1999-01-31");
+    const newToDo2 = new toDo("Shopping - Anne");
+    newToDo2.setDescription("Anne's Wishlist: Airpods");
+    newToDo2.setDueDate("30/8/24");
     newToDo2.setPriority("High");
 
     defaultProj.addToDo(newToDo);

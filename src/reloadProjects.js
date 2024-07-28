@@ -14,5 +14,6 @@ export default function reloadProjects(element, index, array) {
 
     currProjContainer.addEventListener("click", () => {
         console.log(element.showToDos());
+        console.log(element);
     });
 };
