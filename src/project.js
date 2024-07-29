@@ -8,10 +8,10 @@ export default class Project {
     }
 
     static restore(title, proj) {
-        console.log(proj);
-        const newProj = new Project(title);
+        /* console.log(proj);
         console.log(`Project Tasks:`);
-        console.log(proj.tasks);
+        console.log(proj.tasks); */
+        const newProj = new Project(title);
         newProj.setTasks(proj.tasks);
         return newProj;
     }

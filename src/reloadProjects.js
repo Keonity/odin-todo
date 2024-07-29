@@ -13,7 +13,9 @@ export default function reloadProjects(element, index, array) {
     sidebarContainer.appendChild(currProjContainer);
 
     currProjContainer.addEventListener("click", () => {
-        console.log(element.showToDos());
-        console.log(element);
+        element.showToDos();
+
+        /* console.log(element.showToDos());
+        console.log(element); */
     });
 };

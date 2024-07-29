@@ -25,8 +25,8 @@ export default function initialPageLoad() {
         clearChildren(sidebarContainer, 2);
 
         projArray.forEach((element, index, array) => {
-            console.log(`Line 28 inPageLoad.js`);
-            console.log(JSON.stringify(element));
+            /* console.log(`Line 28 inPageLoad.js`);
+            console.log(JSON.stringify(element)); */
             localStorage.setItem(`${element.title}`, JSON.stringify(element));
             reloadProjects(element, array, index);
         });
@@ -51,14 +51,14 @@ export default function initialPageLoad() {
         for (let i = 0; i < localStorage.length; i++) {
             const zombieProj = JSON.parse(localStorage.getItem(localStorage.key(i)));
             if (zombieProj === undefined) {
-                // do nothing
-                // console.log(zombieProj[0].title);
-                // console.log(i);
-                console.log(`Title Undefined`);
+                /* do nothing
+                console.log(zombieProj[0].title);
+                console.log(i);
+                console.log(`Title Undefined`); */
             }
             else {
-                // console.log(zombieProj.title);
-                console.log(localStorage.key(i)); // OBJECT NULL BETWEEN THIS POINT AND NEXT MARKING
+                /* console.log(zombieProj.title);
+                console.log(localStorage.key(i)); // OBJECT NULL BETWEEN THIS POINT AND NEXT MARKING */
                 const newProj = Project.restore(localStorage.key(i), zombieProj);
                 // console.log(JSON.parse(localStorage.getItem(localStorage.key(i))));
                 projArray.push(newProj);
@@ -70,18 +70,17 @@ export default function initialPageLoad() {
         projectContainer.appendChild(toDoContainer);
     
         if (projArray[0] === undefined) {
-            // do nothing
-            console.log('undefined');
+            /* do nothing
+            console.log('undefined'); */
         }
         else {
-            // 7/29/24 - OBJECT HAS NULL FIELDS AT THIS POINT -- INVESTIGATE WHY
-            console.log(projArray[0]);
+            // console.log(projArray[0]);
             displayToDos(projArray[0]);
         }
 
         projArray.forEach((element, index, array) => {
-            console.log(`Line 82 inPageLoad.js`);
-            console.log(JSON.stringify(element));
+            /* console.log(`Line 82 inPageLoad.js`);
+            console.log(JSON.stringify(element)); */
             localStorage.setItem(`${element.title}`, JSON.stringify(element));
             reloadProjects(element, array, index);
         });
@@ -105,7 +104,7 @@ export default function initialPageLoad() {
         projArray.push(defaultProj);
         projArray.push(defaultProj2);
     
-        console.log(defaultProj.getTasks()[0].description);
+        // console.log(defaultProj.getTasks()[0].description);
 
         const projectContainer = document.querySelector("#projectContainer");
         projectContainer.appendChild(sidebarContainer);
@@ -114,8 +113,8 @@ export default function initialPageLoad() {
         displayToDos(defaultProj);
     
         projArray.forEach((element, index, array) => {
-            console.log(`Line 116 inPageLoad.js`);
-            console.log(JSON.stringify(element));
+            /* console.log(`Line 116 inPageLoad.js`);
+            console.log(JSON.stringify(element)); */
             localStorage.setItem(`${element.title}`, JSON.stringify(element));
             reloadProjects(element, array, index);
         });

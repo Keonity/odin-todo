@@ -40,9 +40,9 @@ export default class toDo {
 
     static restore(tasks) {
         const newToDo = new toDo(tasks.title);
-        console.log(tasks.description);
+        /* console.log(tasks.description);
         console.log(tasks.dueDate);
-        console.log(tasks.priority);
+        console.log(tasks.priority); */
         newToDo.description = tasks.description;
         newToDo.dueDate = tasks.dueDate;
         newToDo.priority = tasks.priority;

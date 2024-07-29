@@ -2,14 +2,14 @@ import toDo from './todo.js';
 import clearChildren from './clearChildren.js';
 
 function displayTasks(toDoContainer, element, index, array) {
-    console.log(element);
-    console.log(toDoContainer);
+    // console.log(element);
+    // console.log(toDoContainer);
     const toDoContainerA = toDoContainer;
-    console.log(toDoContainerA);
+    // console.log(toDoContainerA);
     const currTaskContainer = document.createElement("div");
     currTaskContainer.setAttribute("class", "taskContainer");
     currTaskContainer.setAttribute("id", `${element.title}`);
-    console.log(currTaskContainer);
+    // console.log(currTaskContainer);
 
     const currTaskTitle = document.createElement("input");
     currTaskTitle.setAttribute("type", "text");
@@ -101,9 +101,10 @@ export default function displayToDos(project) {
 
             /* while (toDoContainer.childElementCount > 2) {
                 toDoContainer.removeChild(toDoContainer.lastChild);
-            } */
+            } 
             console.log(`Line 106 DTD.js`);
-            console.log(JSON.stringify(project));
+            console.log(JSON.stringify(project)); */
+
             localStorage.setItem(`${project.title}`, JSON.stringify(project));
 
             (project.getTasks()).forEach((element, index, array) => {
@@ -117,8 +118,8 @@ export default function displayToDos(project) {
                 currTaskTitle.setAttribute("value", `${element.title}`);
                 currTaskTitle.addEventListener("change", (event) => {
                     element.setTitle(event.target.value);
-                    console.log(`Line 120 DTD.js`);
-                    console.log(JSON.stringify(project));
+                    // console.log(`Line 120 DTD.js`);
+                    // console.log(JSON.stringify(project));
                     localStorage.setItem(`${project.title}`, JSON.stringify(project));
                 });
         
@@ -128,8 +129,8 @@ export default function displayToDos(project) {
                 currTaskDueDate.setAttribute("value", `${element.dueDate}`);
                 currTaskDueDate.addEventListener("change", (event) => {
                     element.setDueDate(event.target.value);
-                    console.log(`Line 131 DTD.js`);
-                    console.log(JSON.stringify(project));
+                    // console.log(`Line 131 DTD.js`);
+                    // console.log(JSON.stringify(project));
                     localStorage.setItem(`${project.title}`, JSON.stringify(project));
                 })
         
@@ -143,8 +144,8 @@ export default function displayToDos(project) {
                     currTaskDesc.setAttribute("value", `${element.description}`);
                     currTaskDesc.addEventListener("change", (event) => {
                         element.setDescription(event.target.value);
-                        console.log(`Line 147 DTD.js`);
-                        console.log(JSON.stringify(project));
+                        // console.log(`Line 147 DTD.js`);
+                        // console.log(JSON.stringify(project));
                         localStorage.setItem(`${project.title}`, JSON.stringify(project));
                     });
     
@@ -154,8 +155,8 @@ export default function displayToDos(project) {
                     currTaskPriority.setAttribute("value", `${element.priority}`);
                     currTaskPriority.addEventListener("change", (event) => {
                         element.setPriority(event.target.value);
-                        console.log(`Line 158 DTD.js`);
-                        console.log(JSON.stringify(project));
+                        // console.log(`Line 158 DTD.js`);
+                        // console.log(JSON.stringify(project));
                         localStorage.setItem(`${project.title}`, JSON.stringify(project));
                     });
     
@@ -198,8 +199,8 @@ export default function displayToDos(project) {
         });
         toDoContainer.appendChild(addTask);
     
-        console.log(`Line 202 DTD.js`);
-        console.log(JSON.stringify(project));
+        // console.log(`Line 202 DTD.js`);
+        // console.log(JSON.stringify(project));
         localStorage.setItem(`${project.title}`, JSON.stringify(project));
         (project.getTasks()).forEach((element, index, array) => {
             const currTaskContainer = document.createElement("div");
@@ -212,8 +213,8 @@ export default function displayToDos(project) {
             currTaskTitle.setAttribute("value", `${element.title}`);
             currTaskTitle.addEventListener("change", (event) => {
                 element.setTitle(event.target.value);
-                console.log(`Line 216 DTD.js`);
-                console.log(JSON.stringify(project));
+                // console.log(`Line 216 DTD.js`);
+                // console.log(JSON.stringify(project));
                 localStorage.setItem(`${project.title}`, JSON.stringify(project));
             });
     
@@ -223,8 +224,8 @@ export default function displayToDos(project) {
             currTaskDueDate.setAttribute("value", `${element.dueDate}`);
             currTaskDueDate.addEventListener("change", (event) => {
                 element.setDueDate(event.target.value);
-                console.log(`Line 226 DTD.js`);
-                console.log(JSON.stringify(project));
+                // console.log(`Line 226 DTD.js`);
+                // console.log(JSON.stringify(project));
                 localStorage.setItem(`${project.title}`, JSON.stringify(project));
             })
     
@@ -238,8 +239,8 @@ export default function displayToDos(project) {
                 currTaskDesc.setAttribute("value", `${element.description}`);
                 currTaskDesc.addEventListener("change", (event) => {
                     element.setDescription(event.target.value);
-                    console.log(`Line 242 DTD.js`);
-                    console.log(JSON.stringify(project));
+                    // console.log(`Line 242 DTD.js`);
+                    // console.log(JSON.stringify(project));
                     localStorage.setItem(`${project.title}`, JSON.stringify(project));
                 });
 
@@ -249,8 +250,8 @@ export default function displayToDos(project) {
                 currTaskPriority.setAttribute("value", `${element.priority}`);
                 currTaskPriority.addEventListener("change", (event) => {
                     element.setPriority(event.target.value);
-                    console.log(`Line 252 DTD.js`);
-                    console.log(JSON.stringify(project));
+                    // console.log(`Line 252 DTD.js`);
+                    // console.log(JSON.stringify(project));
                     localStorage.setItem(`${project.title}`, JSON.stringify(project));
                 });
 
