@@ -25,6 +25,8 @@ export default function initialPageLoad() {
         clearChildren(sidebarContainer, 2);
 
         projArray.forEach((element, index, array) => {
+            console.log(`Line 28 inPageLoad.js`);
+            console.log(JSON.stringify(element));
             localStorage.setItem(`${element.title}`, JSON.stringify(element));
             reloadProjects(element, array, index);
         });
@@ -42,48 +44,81 @@ export default function initialPageLoad() {
 
     const projArray = new Array();
 
-    const defaultProj = new Project("Cafe Recipes");
-    const defaultProj2 = new Project("Birthdays");
-    const newToDo = new toDo("Example Latte");
-    newToDo.setDescription("Astral Espresso roast under a cloud of steamy milkfoam.");
-    newToDo.setDueDate("19/10/24");
-    newToDo.setPriority("Medium");
+    // console.log(localStorage.length);
+    // console.log(localStorage.getItem(localStorage.key(0)));
 
-    const newToDo2 = new toDo("Shopping - Anne");
-    newToDo2.setDescription("Anne's Wishlist: Airpods");
-    newToDo2.setDueDate("30/8/24");
-    newToDo2.setPriority("High");
+    if (localStorage.length > 0) {
+        for (let i = 0; i < localStorage.length; i++) {
+            const zombieProj = JSON.parse(localStorage.getItem(localStorage.key(i)));
+            if (zombieProj === undefined) {
+                // do nothing
+                // console.log(zombieProj[0].title);
+                // console.log(i);
+                console.log(`Title Undefined`);
+            }
+            else {
+                // console.log(zombieProj.title);
+                console.log(localStorage.key(i)); // OBJECT NULL BETWEEN THIS POINT AND NEXT MARKING
+                const newProj = Project.restore(localStorage.key(i), zombieProj);
+                // console.log(JSON.parse(localStorage.getItem(localStorage.key(i))));
+                projArray.push(newProj);
+            }
+        }
 
-    defaultProj.addToDo(newToDo);
-    defaultProj2.addToDo(newToDo2);
+        const projectContainer = document.querySelector("#projectContainer");
+        projectContainer.appendChild(sidebarContainer);
+        projectContainer.appendChild(toDoContainer);
+    
+        if (projArray[0] === undefined) {
+            // do nothing
+            console.log('undefined');
+        }
+        else {
+            // 7/29/24 - OBJECT HAS NULL FIELDS AT THIS POINT -- INVESTIGATE WHY
+            console.log(projArray[0]);
+            displayToDos(projArray[0]);
+        }
 
-    projArray.push(defaultProj);
-    projArray.push(defaultProj2);
+        projArray.forEach((element, index, array) => {
+            console.log(`Line 82 inPageLoad.js`);
+            console.log(JSON.stringify(element));
+            localStorage.setItem(`${element.title}`, JSON.stringify(element));
+            reloadProjects(element, array, index);
+        });
+    }
+    else {
+        const defaultProj = new Project("Cafe Recipes");
+        const defaultProj2 = new Project("Birthdays");
+        const newToDo = new toDo("Example Latte");
+        newToDo.setDescription("Astral Espresso roast under a cloud of steamy milkfoam.");
+        newToDo.setDueDate("19/10/24");
+        newToDo.setPriority("Medium");
+    
+        const newToDo2 = new toDo("Shopping - Anne");
+        newToDo2.setDescription("Anne's Wishlist: Airpods");
+        newToDo2.setDueDate("30/8/24");
+        newToDo2.setPriority("High");
+    
+        defaultProj.addToDo(newToDo);
+        defaultProj2.addToDo(newToDo2);
+    
+        projArray.push(defaultProj);
+        projArray.push(defaultProj2);
+    
+        console.log(defaultProj.getTasks()[0].description);
 
-    console.log(defaultProj.getTasks()[0].description);
-
-    const projectContainer = document.querySelector("#projectContainer");
-    projectContainer.appendChild(sidebarContainer);
-    projectContainer.appendChild(toDoContainer);
-
-    displayToDos(defaultProj);
-
-    projArray.forEach((element, index, array) => {
-        localStorage.setItem(`${element.title}`, JSON.stringify(element));
-        reloadProjects(element, array, index);
-        /* const currProjContainer = document.createElement("div");
-        currProjContainer.setAttribute("id", "projSidebarContainer");
-
-        const currProjTitle = document.createElement("h2");
-        currProjTitle.setAttribute("id", "projSidebarTitle");
-        currProjTitle.innerText = `${element.title}`;
-
-        currProjContainer.appendChild(currProjTitle);
-        sidebarContainer.appendChild(currProjContainer);
-
-        currProjContainer.addEventListener("click", () => {
-            console.log(displayToDos(array[index]));
-        }); */
-    });
-
+        const projectContainer = document.querySelector("#projectContainer");
+        projectContainer.appendChild(sidebarContainer);
+        projectContainer.appendChild(toDoContainer);
+    
+        displayToDos(defaultProj);
+    
+        projArray.forEach((element, index, array) => {
+            console.log(`Line 116 inPageLoad.js`);
+            console.log(JSON.stringify(element));
+            localStorage.setItem(`${element.title}`, JSON.stringify(element));
+            reloadProjects(element, array, index);
+        });
+    
+    }
 };
