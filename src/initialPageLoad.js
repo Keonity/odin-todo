@@ -25,6 +25,7 @@ export default function initialPageLoad() {
         clearChildren(sidebarContainer, 2);
 
         projArray.forEach((element, index, array) => {
+            localStorage.setItem(`${element.title}`, JSON.stringify(element));
             reloadProjects(element, array, index);
         });
     });
@@ -68,6 +69,7 @@ export default function initialPageLoad() {
     displayToDos(defaultProj);
 
     projArray.forEach((element, index, array) => {
+        localStorage.setItem(`${element.title}`, JSON.stringify(element));
         reloadProjects(element, array, index);
         /* const currProjContainer = document.createElement("div");
         currProjContainer.setAttribute("id", "projSidebarContainer");
